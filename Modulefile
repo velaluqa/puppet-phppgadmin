@@ -1,0 +1,8 @@
+name    'puppet-phppgadmin'
+version '0.0.1'
+source  'https://github.com/leoc/puppet-phppgadmin'
+author  'Arthur Leonard Andersen'
+license 'GPLv3'
+summary 'Puppet PhpPgAdmin Module'
+description 'Module to install PhpPgAdmin using puppet.'
+project_page 'https://github.com/leoc/puppet-phppgadmin/'
