@@ -1,12 +1,27 @@
-# == Class: redmine
+# == Class: phppgadmin
 #
 # === Parameters
 #
-# TODO: Add parameters
+# [path] The path to install phppgadmin to (default: /srv/phpgadmin)
+# [user] The user that should own that directory (default: www-data)
+# [servers] An array of servers (default: [])
 #
 # === Examples
 #
-# TODO: Add examples
+#  class { 'phppgadmin':
+#    path => "/srv/phppgadmin",
+#    user => "www-data",
+#    servers => [
+#      {
+#        desc => "local",
+#        host => "127.0.0.1",
+#      },
+#      {
+#        desc => "other",
+#        host => "192.168.1.30",
+#      }
+#    ]
+#  }
 #
 # === Authors
 #
