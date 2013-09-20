@@ -1,4 +1,4 @@
-name    'puppet-phppgadmin'
+name    'leoc-phppgadmin'
 version '0.0.2'
 source  'https://github.com/leoc/puppet-phppgadmin'
 author  'Arthur Leonard Andersen'
