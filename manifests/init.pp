@@ -59,7 +59,7 @@ class phppgadmin (
 
   exec { "phppgadmin-upgrade":
     path => "/bin:/usr/bin",
-    command => "bash -c 'cd ${path}; git fetch; git checkout origin/REL_5-0'",
+    command => "bash -c 'cd ${path}; git fetch; git checkout origin/REL_5-1'",
     require => Exec["phppgadmin-checkout"],
     user => $user,
   }
