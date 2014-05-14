@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/velaluqa/puppet-phppgadmin.svg)
+
 # Puppet-phppgadmin
 
 A puppet module to easily deploy phppgadmin. Make sure you have a
