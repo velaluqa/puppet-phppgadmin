@@ -41,9 +41,14 @@ class phppgadmin (
   $servers = [],
   $revision = 'origin/REL_5-1'
 ) {
+  file { $path:
+    ensure         => directory,
+    owner          => $user,
+  }
+  ->
   vcsrepo { $path:
     ensure   => present,
-    provider => 'git',
+    provider => git,
     source   => 'git://github.com/phppgadmin/phppgadmin.git',
     user     => $user,
     revision => $revision,
@@ -53,5 +58,5 @@ class phppgadmin (
     path    => "${path}/conf/config.inc.php",
     content => template('phppgadmin/config.inc.php.erb'),
     owner   => $user,
-   }
+  }
 } # Class:: phppgadmin
