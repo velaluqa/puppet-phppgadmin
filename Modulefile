@@ -1,5 +1,5 @@
 name    'velaluqa-phppgadmin'
-version '0.0.3'
+version '0.1.0'
 source  'https://github.com/velaluqa/puppet-phppgadmin'
 author  'Arthur Leonard Andersen'
 license 'GPLv3'
