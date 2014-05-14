@@ -5,6 +5,7 @@
 # [path] The path to install phppgadmin to (default: /srv/phpgadmin)
 # [user] The user that should own that directory (default: www-data)
 # [servers] An array of servers (default: [])
+# [revision] The revision for the deployment (default: 'origin/REL_5-1')
 #
 # === Examples
 #
@@ -35,39 +36,22 @@
 #
 #
 class phppgadmin (
-  $path = "/srv/phppgadmin",
-  $user = "www-data",
-  $servers = []
+  $path = '/srv/phppgadmin',
+  $user = 'www-data',
+  $servers = [],
+  $revision = 'origin/REL_5-1'
 ) {
-  if !defined(Package['git']) {
-    package { 'git': ensure => present; }
+  vcsrepo { $path:
+    ensure   => present,
+    provider => 'git',
+    source   => 'git://github.com/phppgadmin/phppgadmin.git',
+    user     => $user,
+    revision => $revision,
   }
-
-  file { $path:
-    ensure => "directory",
-    owner => $user,
-    require => Package['git'],
-  }
-
-  exec { "phppgadmin-checkout":
-    path => "/bin:/usr/bin",
-    creates => "$path/.git",
-    command => "git clone git://github.com/phppgadmin/phppgadmin.git ${path}",
-    require => File[$path],
-    user => $user,
-  }
-
-  exec { "phppgadmin-upgrade":
-    path => "/bin:/usr/bin",
-    command => "bash -c 'cd ${path}; git fetch; git checkout origin/REL_5-1'",
-    require => Exec["phppgadmin-checkout"],
-    user => $user,
-  }
-
-  file { "phppgadmin-conf":
-    path => "$path/conf/config.inc.php",
-    content => template("phppgadmin/config.inc.php.erb"),
-    owner => $user,
-    require => Exec["phppgadmin-upgrade"],
-  }
+  ->
+  file { 'phppgadmin-conf':
+    path    => "${path}/conf/config.inc.php",
+    content => template('phppgadmin/config.inc.php.erb'),
+    owner   => $user,
+   }
 } # Class:: phppgadmin
