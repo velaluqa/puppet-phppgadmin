@@ -21,7 +21,8 @@
 #        desc => "other",
 #        host => "192.168.1.30",
 #      }
-#    ]
+#    ],
+#    depth = 0
 #  }
 #
 # === Authors
@@ -39,7 +40,8 @@ class phppgadmin (
   $path = '/srv/phppgadmin',
   $user = 'www-data',
   $servers = [],
-  $revision = 'origin/REL_5-1'
+  $revision = 'origin/REL_5-1',
+  $depth = 0,
 ) {
   file { $path:
     ensure         => directory,
@@ -52,6 +54,7 @@ class phppgadmin (
     source   => 'git://github.com/phppgadmin/phppgadmin.git',
     user     => $user,
     revision => $revision,
+    depth    => $depth,
   }
   ->
   file { 'phppgadmin-conf':
