@@ -1,5 +1,10 @@
 ![Build Status](https://travis-ci.org/velaluqa/puppet-phppgadmin.svg)
 
+# UNMAINTAINED
+
+Since we stopped using puppet for our infrastructure, we are not going to 
+maintain this solution anymore.
+
 # Puppet-phppgadmin
 
 A puppet module to easily deploy phppgadmin. Make sure you have a
